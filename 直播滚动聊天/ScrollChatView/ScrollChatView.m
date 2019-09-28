@@ -180,9 +180,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     ScrollChatTextModel *md = _imTableDataSource[indexPath.row];
-    if (self.yx_delegate && [self.yx_delegate respondsToSelector:@selector(ScrollViewChatTextView:withIdex:withText:)]) {
-        [self.yx_delegate ScrollViewChatTextView:self withIdex:indexPath.row withText:md.yx_content];
-    }
+//这一部分是协议的回调，将其改为block传值
+    //    if (self.yx_delegate && [self.yx_delegate respondsToSelector:@selector(ScrollViewChatTextView:withIdex:withText:)]) {
+//        [self.yx_delegate ScrollViewChatTextView:self withIdex:indexPath.row withText:md.yx_content];
+//    }
+    //调用这个方法
+    self.showContentBlock(self, indexPath.row,md.yx_content);
 }
 
 

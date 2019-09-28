@@ -10,6 +10,8 @@
 
 @class ScrollChatView;
 
+typedef void(^ShowContentBlock)(ScrollChatView * _Nullable view,NSInteger   index,NSString  * _Nonnull  text);
+
 @protocol ScrollChatViewDelegate <NSObject>
 
 - (void)ScrollViewChatTextView:(ScrollChatView *)view withIdex:(NSInteger)index withText:(NSString *)text;
@@ -62,7 +64,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic,copy) NSString *currentText;
 
+//申明协议
 @property (nonatomic,weak) id<ScrollChatViewDelegate> yx_delegate;
+
+//申明block
+@property (nonatomic,copy) ShowContentBlock showContentBlock;
 @end
 
 NS_ASSUME_NONNULL_END
