@@ -225,6 +225,9 @@
     
     NSDictionary *attrs = @{NSFontAttributeName : font};
     CGSize size = CGSizeMake(width, CGFLOAT_MAX);
+    NSString *testHeight = @"为帮助我们更快处理，请提供问题类型和出现位置等详细信息哦~略略略";
+    CGSize RectSize = [testHeight boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:11]} context:nil].size;
+    NSLog(@"这个的高度为%f",RectSize.height);
     return [content boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
 }
 @end
